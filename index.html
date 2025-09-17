@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sorteo Empleados</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <img src="img/logo.png" alt="Logo Empresa" />
+  <h1>Sorteo de Premios para Empleados INCO 2025</h1>
+</header>
+
+<main>
+  <section id="section-empleados">
+    <h2>1. Subir archivo de empleados (CSV: código,nombre,área)</h2>
+    <input type="file" id="inputEmpleados" accept=".csv" />
+    <small>Formato CSV: código,nombre,área (Producción, Ventas, Administración)</small>
+    <table id="tablaEmpleados" class="hidden">
+      <thead><tr><th>Código</th><th>Nombre</th><th>Área</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section id="section-premios" class="hidden">
+    <h2>2. Subir premios</h2>
+    <label>Nombre del premio:
+      <input type="text" id="premioNombre" placeholder="Ej: Premio 1" />
+    </label>
+    <label>Cantidad total:
+      <input type="number" id="premioCantidad" min="1" />
+    </label>
+    <button id="btnAgregarPremio">Agregar Premio</button>
+
+    <h3>Premios agregados</h3>
+    <table id="tablaPremios">
+      <thead><tr><th>Premio</th><th>Cantidad total</th><th>Eliminar</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <button id="btnAsignarPremios" disabled>3. Asignar premios por área y generales</button>
+  </section>
+
+  <section id="section-asignacion" class="hidden">
+    <h2>3. Asignar premios a áreas</h2>
+    <form id="formAsignacion">
+      <table id="tablaAsignacion">
+        <thead>
+          <tr>
+            <th>Premio</th>
+            <th>Total</th>
+            <th>Producción</th>
+            <th>Ventas</th>
+            <th>Administración</th>
+            <th>Generales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llenará dinámicamente -->
+        </tbody>
+      </table>
+      <button type="submit">Guardar asignación y mostrar resultados</button>
+    </form>
+  </section>
+
+  <section id="section-resultados" class="hidden">
+    <h2>4. Resultados y sorteo en vivo</h2>
+    <button id="btnIniciarSorteo">Iniciar sorteo</button>
+    <div id="resultadoSorteo" class="winner-list"></div>
+    <button id="btnExportarGanadores" class="hidden">Exportar ganadores</button>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
